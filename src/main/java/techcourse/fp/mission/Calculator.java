@@ -4,10 +4,12 @@ import java.util.List;
 
 public class Calculator {
 
-    public static int sumAll(List<Integer> numbers) {
+    public static int sumAll(List<Integer> numbers, Conditional conditional) {
         int total = 0;
         for (int number : numbers) {
-            total += number;
+            if (conditional.test(number)) {
+                total += number;
+            }
         }
         return total;
     }
@@ -23,10 +25,7 @@ public class Calculator {
     }
 
     public static int sumAllOverThree(List<Integer> numbers) {
-        int total = 0;
-
         //TODO: List에 담긴 값 중 3보다 큰 수만을 더해야 한다.
-
-        return total;
+        return sumAll(numbers, (number) -> number > 3);
     }
 }

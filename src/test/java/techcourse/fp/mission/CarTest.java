@@ -16,7 +16,10 @@ class CarTest {
                 return true;
             }
         });
-        assertThat(actual).isEqualTo(new Car("pobi", 1));
+
+        Car lambdaActual = car.move(() -> true);
+        // assertThat(actual).isEqualTo(new Car("pobi", 1));
+        assertThat(lambdaActual).isEqualTo(new Car("pobi", 1));
     }
 
     @Test
@@ -28,6 +31,8 @@ class CarTest {
                 return false;
             }
         });
-        assertThat(actual).isEqualTo(new Car("pobi", 0));
+        Car lambdaActual = car.move(() -> false);
+        // assertThat(actual).isEqualTo(new Car("pobi", 0));
+        assertThat(lambdaActual).isEqualTo(new Car("pobi", 0));
     }
 }
